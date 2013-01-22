@@ -12,7 +12,7 @@ public class MainWindow extends JFrame {
 	//Standardkonstruktor
 	public MainWindow()
 	{
-		
+		//Total toll
 	}
 
 }
