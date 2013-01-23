@@ -13,6 +13,7 @@ public class ZeitThread extends Thread
 	}
 	public void run()
 	{
+		f.startAbschreiben();
 		while(_zeit > 0)
 		{
 			//jede Sekunde (1000 Millisekunden)
@@ -30,6 +31,7 @@ public class ZeitThread extends Thread
 				e.printStackTrace();
 			}
 		}
+		f.endeAbschreiben();
 	}
 	public int getSeconds()
 	{
