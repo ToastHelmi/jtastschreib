@@ -11,6 +11,9 @@ public class ZeitThread extends Thread
 	{
 		while(_zeit > 0)
 		{
+			//jede Sekunde (1000 Millisekunden)
+			//wird die übrige zeit um eins verringert
+			//solange bis es auf null ist
 			_zeit = _zeit -1;
 			try 
 			{
@@ -22,5 +25,16 @@ public class ZeitThread extends Thread
 				e.printStackTrace();
 			}
 		}
+	}
+	public int getSeconds()
+	{
+		return _zeit;
+	}
+	public String getTime()
+	{
+		//liefert die übrige Zeit in Minuten und Sekunden zurück
+		int sekunden = _zeit % 60;
+		int minuten = (_zeit - sekunden) / 60;
+		return minuten+":"+sekunden;
 	}
 }
