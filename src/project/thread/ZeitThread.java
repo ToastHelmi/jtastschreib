@@ -19,6 +19,7 @@ public class ZeitThread extends Thread
 			//wird die übrige zeit um eins verringert
 			//solange bis es auf null ist
 			_zeit = _zeit -1;
+			f.setCountdown(getTime());//Beschriftet das Label 
 			try 
 			{
 				sleep(1000);
