@@ -1,6 +1,6 @@
 package project.window;
 
-public class Abschreimfrm
+public class Abschreibfrm
 {
-
+	
 }
