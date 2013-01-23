@@ -3,7 +3,7 @@ package project.main;
 /**
  * @author Schwarz,Keck,Matejka,Rößler
  * @version IN DEVELOPMENT
- *
+ * @category Schule
  */
 //sogar meinen namen kann er schreiben :D
 public class Application
