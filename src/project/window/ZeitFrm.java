@@ -12,4 +12,10 @@ public abstract class ZeitFrm extends JFrame
 	{
 		return lblcountdown;
 	}
+	public abstract void startAbschreiben();
+	public abstract void endeAbschreiben();
+	public void setCountdown(String zeit)
+	{
+		lblcountdown.setText(zeit);
+	}
 }
