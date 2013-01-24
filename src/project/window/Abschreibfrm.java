@@ -4,6 +4,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -66,6 +68,26 @@ public class Abschreibfrm extends JFrame
 		c.gridx = 0;
 		c.gridy = 2;
 		this.add(lblcountdown,c);
+		this.pack();
+		this.addKeyListener(new KeyListener()
+		{
+
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				KeyPressed(e);
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) 
+			{
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) 
+			{
+			}
+		});
 	}
 	public void setCountdown(String text)
 	{
@@ -97,5 +119,12 @@ public class Abschreibfrm extends JFrame
 			startButton.setVisible(false);
 		}
 		
+	}
+	public void KeyPressed(KeyEvent e)
+	{
+		if(_gestartet == true)
+		{
+						
+		}
 	}
 }
