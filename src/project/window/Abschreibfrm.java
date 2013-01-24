@@ -68,25 +68,7 @@ public class Abschreibfrm extends ZeitFrm
 		c.gridy = 2;
 		this.add(this.getCountdownLabel(),c);
 		this.pack();
-		this.addKeyListener(new KeyListener()
-		{
-
-			@Override
-			public void keyPressed(KeyEvent e) 
-			{
-				KeyPressed(e);
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) 
-			{
-			}
-
-			@Override
-			public void keyTyped(KeyEvent e) 
-			{
-			}
-		});
+		
 	}
 	public void setCountdown(String text)
 	{
@@ -118,12 +100,5 @@ public class Abschreibfrm extends ZeitFrm
 			startButton.setVisible(false);
 		}
 		
-	}
-	public void KeyPressed(KeyEvent e)
-	{
-		if(_gestartet == true)
-		{
-			//Der Text wird angezeigt und er kann abgetiptt werden			
-		}
 	}
 }
