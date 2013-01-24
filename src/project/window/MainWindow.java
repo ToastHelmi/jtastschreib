@@ -14,6 +14,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JSpinner;
 
+import project.Exception.DecryptException;
+import project.text.TextDatei;
+import project.text.Vorgabetext;
+import project.util.Crypt;
+
 public class MainWindow extends JFrame 
 {
 	//MainWindow = AuswahlWindow
@@ -52,7 +57,7 @@ public class MainWindow extends JFrame
 		c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 1;
-		c.fill = GridBagConstraints.BOTH;
+		c.fill = GridBagConstraints.HORIZONTAL;
 		this.add(lernen,c);
 		
 		minuten = new JSpinner();
@@ -65,10 +70,23 @@ public class MainWindow extends JFrame
 	}
 	public void ButtonKlick(ActionEvent e)
 	{
+		Vorgabetext vorgabe = null;
+		try 
+		{
+			//Öffnent des FileBrowser, decryptet den eingelesenen Text und wandelt es in ein Vorgabetext-Objekt um
+			vorgabe = Crypt.getDecryptText(TextDatei.getCryptedText(getTextPath()));
+		} 
+		catch (DecryptException e1) 
+		{
+			// TODO MessageBox mit Fehlermeldung
+		}
 		if(e.getActionCommand().equals("Abschreiben auf Zeit"))
 		{
-			Abschreibfrm f = new Abschreibfrm((int)(minuten.getValue()));
-			f.setVisible(true);
+			if(vorgabe != null)
+			{
+				Abschreibfrm f = new Abschreibfrm((int)(minuten.getValue()),vorgabe);
+				f.setVisible(true);
+			}
 		}
 		else if(e.getActionCommand().equals("Lernen"))
 		{
