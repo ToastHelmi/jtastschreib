@@ -23,8 +23,21 @@ public class Abschreibfrm extends JFrame
 	public Abschreibfrm(int zeit)
 	{
 		super("Abschreiben");
+		InitializeComponent();
+		endeAbschreiben();
+		t = new ZeitThread(_zeit,this);
+	}
+	public void InitializeComponent()
+	{
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
+		c.weightx = 1;
+		//_schriftpanel = new Schriftpanel();
+		//this.add(_schriftpanel,c);
+		c = new GridBagConstraints();
+		
 		startButton = new JButton("Start");
 		startButton.addActionListener(new ActionListener()
 		{
@@ -35,8 +48,6 @@ public class Abschreibfrm extends JFrame
 			}
 		});
 		lblcountdown = new JLabel();
-		lblcountdown.setVisible(false);
-		t = new ZeitThread(_zeit,this);
 	}
 	public void setCountdown(String text)
 	{
