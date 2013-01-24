@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 import project.text.Vorgabetext;
 
-public class Lernenfrm extends JFrame
+public class Lernenfrm extends ZeitFrm
 {
 	private Vorgabetext vorgabe;
 	//private Leuchttastenpanel _panel;
