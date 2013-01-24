@@ -53,6 +53,7 @@ public class Lernenfrm extends JFrame
 				// TODO Auto-generated method stub
 			}
 		});
+		this.pack();
 	}
 	public void KeyPressed()
 	{
