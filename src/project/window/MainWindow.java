@@ -4,8 +4,13 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.File;
+import java.io.FileFilter;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JSpinner;
 
@@ -70,4 +75,55 @@ public class MainWindow extends JFrame
 			//Lernenfrm f = new Lernenfrm();
 		}
 	}
+	private String getTextPath() 
+	{
+        final JFileChooser chooser = new JFileChooser("Verzeichnis wählen");
+        chooser.setDialogType(JFileChooser.OPEN_DIALOG);
+        chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        final File file = new File("/home");// vll configdatei mit startpfrad
+
+        chooser.setCurrentDirectory(file);
+        chooser.setFileFilter( new javax.swing.filechooser.FileFilter() {
+			
+			@Override
+			public String getDescription() {
+				// TODO Auto-generated method stub
+				return "TextDatein (.txt)";
+			}
+			
+			@Override
+			public boolean accept(File f) {
+				return f.getName().endsWith(".txt") || f.isDirectory();
+				//TODO später vll noch eigene Dateiendung wer weis 
+			}
+		});
+
+        chooser.addPropertyChangeListener(new PropertyChangeListener() {
+            public void propertyChange(PropertyChangeEvent e) {
+                if (e.getPropertyName().equals(JFileChooser.SELECTED_FILE_CHANGED_PROPERTY)
+                        || e.getPropertyName().equals(JFileChooser.DIRECTORY_CHANGED_PROPERTY)) {
+                    final File f = (File) e.getNewValue();
+                }
+            }
+        });
+
+        chooser.setVisible(true);
+        final int result = chooser.showOpenDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File inputVerzFile = chooser.getSelectedFile();
+            chooser.setVisible(false);
+            if(!inputVerzFile.isDirectory())
+            	return inputVerzFile.getPath();
+            else
+            	return null;
+        }
+        else
+        {
+        	chooser.setVisible(false);
+        	return null;
+        }
+        	
+    } 
+
 }
