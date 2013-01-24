@@ -19,12 +19,13 @@ public class Abschreibfrm extends ZeitFrm
 	//private JLabel lblcountdown;
 	private boolean _gestartet = false;//False => Die Eingabe-Elemente sind deaktiviert, True => Die Eingabe-Elemente sind aktiviert
 	//private Schriftpanel _schriftpanel;//Vorgabetext
-	//private Anzeigepanel _anzpanel;//Eingabe
+	private Eingabefeld _eingabe;//Eingabe
 	private ZeitThread t;
 	private JButton startButton;
 	public Abschreibfrm(int zeit)
 	{
 		super("Abschreiben");
+		_zeit = zeit;
 		InitializeComponent();
 		endeAbschreiben();
 		t = new ZeitThread(_zeit * 60,this); //*60 bewirkt das _zeit zu Minuten wird
@@ -36,6 +37,7 @@ public class Abschreibfrm extends ZeitFrm
 		c.gridx = 0;
 		c.gridy = 0;
 		c.weightx = 1;
+		c.gridwidth = 2;
 		//_schriftpanel = new Schriftpanel();
 		//this.add(_schriftpanel,c);
 		
@@ -44,8 +46,11 @@ public class Abschreibfrm extends ZeitFrm
 		c.gridx = 0;
 		c.gridy = 1;
 		c.weightx = 1;
-		//_anzpanel = new Anzeigepanel();
-		//this.add(_anzpanel,c);
+		c.gridwidth = 2;
+		c.fill = GridBagConstraints.BOTH;
+		_eingabe = new Eingabefeld(true);
+		this.add(_eingabe,c);
+		
 		c = new GridBagConstraints();
 		
 		
@@ -80,7 +85,8 @@ public class Abschreibfrm extends ZeitFrm
 		_gestartet = true;
 		this.getCountdownLabel().setEnabled(true);
 		//_schriftpanel.setEnabled(true);
-		//_anzpanel.setEnabled(true);
+		_eingabe.setEnabled(true);
+		this.pack();
 	}
 	public void endeAbschreiben()
 	{
@@ -89,7 +95,7 @@ public class Abschreibfrm extends ZeitFrm
 		this.getCountdownLabel().setEnabled(false);
 		//_schriftpanel.setEnabled(false);
 		
-		//_anzpanel.setEnabled(false);
+		_eingabe.setEnabled(false);
 		//Auswertung aufrufen
 	}
 	public void startButtonClick(ActionEvent e)
