@@ -1,5 +1,7 @@
 package project.main;
 
+import project.window.MainWindow;
+
 /**
  * @author Schwarz,Keck,Matejka,Rößler
  * @version IN DEVELOPMENT
@@ -11,6 +13,8 @@ public class Application
 	public static void main(String[] args)
 	{
 		System.out.println("Debugging");
+		MainWindow w = new MainWindow(); 
+		w.setVisible(true);//Das Auswahlfenster wird erzeugt und angezeigt
 	}
 
 }
