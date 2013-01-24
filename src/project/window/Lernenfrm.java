@@ -59,4 +59,16 @@ public class Lernenfrm extends ZeitFrm
 	{
 		
 	}
+	@Override
+	public void startAbschreiben() 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void endeAbschreiben() 
+	{
+		// TODO Auto-generated method stub
+		
+	}
 }
