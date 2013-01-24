@@ -62,7 +62,7 @@ public class MainWindow extends JFrame
 	{
 		if(e.getActionCommand().equals("Abschreiben auf Zeit"))
 		{
-			Abschreibfrm f = new Abschreibfrm((int)minuten.getValue());
+			Abschreibfrm f = new Abschreibfrm((int)(minuten.getValue()));
 			f.setVisible(true);
 		}
 		else if(e.getActionCommand().equals("Lernen"))
