@@ -90,7 +90,11 @@ public class MainWindow extends JFrame
 		}
 		else if(e.getActionCommand().equals("Lernen"))
 		{
-			//Lernenfrm f = new Lernenfrm();
+			if(vorgabe != null)
+			{
+				Lernenfrm f = new Lernenfrm(vorgabe);
+				f.setVisible(true);
+			}
 		}
 	}
 	private String getTextPath() 
