@@ -13,10 +13,10 @@ import javax.swing.JLabel;
 
 import project.thread.ZeitThread;
 
-public class Abschreibfrm extends JFrame
+public class Abschreibfrm extends ZeitFrm
 {
 	private int _zeit = 0;
-	private JLabel lblcountdown;
+	//private JLabel lblcountdown;
 	private boolean _gestartet = false;//False => Die Eingabe-Elemente sind deaktiviert, True => Die Eingabe-Elemente sind aktiviert
 	//private Schriftpanel _schriftpanel;//Vorgabetext
 	//private Anzeigepanel _anzpanel;//Eingabe
@@ -63,11 +63,10 @@ public class Abschreibfrm extends JFrame
 		c.gridy = 2;
 		this.add(startButton,c);
 		
-		lblcountdown = new JLabel();
 		c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 2;
-		this.add(lblcountdown,c);
+		this.add(this.getCountdownLabel(),c);
 		this.pack();
 		this.addKeyListener(new KeyListener()
 		{
@@ -91,13 +90,13 @@ public class Abschreibfrm extends JFrame
 	}
 	public void setCountdown(String text)
 	{
-		lblcountdown.setText("Zeit:"+text);
+		this.getCountdownLabel().setText("Zeit:"+text);
 	}
 	public void startAbschreiben()
 	{
 		//Gibt die Elemente frei
 		_gestartet = true;
-		lblcountdown.setEnabled(true);
+		this.getCountdownLabel().setEnabled(true);
 		//_schriftpanel.setEnabled(true);
 		//_anzpanel.setEnabled(true);
 	}
@@ -105,7 +104,7 @@ public class Abschreibfrm extends JFrame
 	{
 		//Deaktiviert die Elemente
 		_gestartet = false;
-		lblcountdown.setEnabled(false);
+		this.getCountdownLabel().setEnabled(false);
 		//_schriftpanel.setEnabled(false);
 		
 		//_anzpanel.setEnabled(false);
