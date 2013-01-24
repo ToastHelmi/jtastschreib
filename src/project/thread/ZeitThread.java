@@ -15,12 +15,14 @@ public class ZeitThread extends Thread
 	public void run()
 	{
 		f.startAbschreiben();
+		System.out.println("Thread gestartet " + _zeit);
 		while(_zeit > 0)
 		{
 			//jede Sekunde (1000 Millisekunden)
 			//wird die übrige zeit um eins verringert
 			//solange bis es auf null ist
 			_zeit = _zeit -1;
+			System.out.println(_zeit+"");
 			f.setCountdown(getTime());//Beschriftet das Label 
 			try 
 			{
