@@ -36,7 +36,16 @@ public class Abschreibfrm extends JFrame
 		c.weightx = 1;
 		//_schriftpanel = new Schriftpanel();
 		//this.add(_schriftpanel,c);
+		
+		
 		c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 1;
+		c.weightx = 1;
+		//_anzpanel = new Anzeigepanel();
+		//this.add(_anzpanel,c);
+		c = new GridBagConstraints();
+		
 		
 		startButton = new JButton("Start");
 		startButton.addActionListener(new ActionListener()
@@ -47,7 +56,16 @@ public class Abschreibfrm extends JFrame
 				startButtonClick(arg0);
 			}
 		});
+		c = new GridBagConstraints();
+		c.gridx = 1;
+		c.gridy = 2;
+		this.add(startButton,c);
+		
 		lblcountdown = new JLabel();
+		c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 2;
+		this.add(lblcountdown,c);
 	}
 	public void setCountdown(String text)
 	{
@@ -57,18 +75,18 @@ public class Abschreibfrm extends JFrame
 	{
 		//Gibt die Elemente frei
 		_gestartet = true;
-		lblcountdown.setVisible(true);
-		//_schriftpanel.setVisible(true);
-		//_anzpanel.setVisible(true);
+		lblcountdown.setEnabled(true);
+		//_schriftpanel.setEnabled(true);
+		//_anzpanel.setEnabled(true);
 	}
 	public void endeAbschreiben()
 	{
 		//Deaktiviert die Elemente
 		_gestartet = false;
-		lblcountdown.setVisible(false);
-		//_schriftpanel.setVisible(false);
+		lblcountdown.setEnabled(false);
+		//_schriftpanel.setEnabled(false);
 		
-		//_anzpanel.setVisible(false);
+		//_anzpanel.setEnabled(false);
 		//Auswertung aufrufen
 	}
 	public void startButtonClick(ActionEvent e)
