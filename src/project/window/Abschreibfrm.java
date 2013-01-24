@@ -27,7 +27,7 @@ public class Abschreibfrm extends ZeitFrm
 		super("Abschreiben");
 		InitializeComponent();
 		endeAbschreiben();
-		t = new ZeitThread(_zeit,this);
+		t = new ZeitThread(_zeit * 60,this); //*60 bewirkt das _zeit zu Minuten wird
 	}
 	public void InitializeComponent()
 	{
