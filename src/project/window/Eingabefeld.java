@@ -113,7 +113,7 @@ public class Eingabefeld extends JTextArea
 		
 		if(this.state == INITIALIZED)
 		{
-			
+			//Startmeldung zeichen
 			g.setColor(Color.RED);
 			g.setFont(new Font("Courier New",Font.BOLD,36));
 			g.drawString("Grundstellung einnehmen. Leertaste zum Starten drücken. ",50, this.getHeight()/2);
