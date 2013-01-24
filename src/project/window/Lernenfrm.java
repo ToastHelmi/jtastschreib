@@ -30,34 +30,7 @@ public class Lernenfrm extends ZeitFrm
 		c.weightx = 1;
 		//this.add(_panel,c);
 		
-		this.addKeyListener(new KeyListener()
-		{
-
-			@Override
-			public void keyPressed(KeyEvent arg0)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void keyReleased(KeyEvent arg0)
-			{
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void keyTyped(KeyEvent arg0)
-			{
-				// TODO Auto-generated method stub
-			}
-		});
 		this.pack();
-	}
-	public void KeyPressed()
-	{
-		
 	}
 	@Override
 	public void startAbschreiben() 
