@@ -1,5 +1,6 @@
 package project.window;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.FocusEvent;
@@ -35,7 +36,6 @@ public class Eingabefeld extends JTextArea
 		this.setColumns(100);
 		this.setMaximumSize(this.getSize());
 		this.state = INITIALIZED;
-		this.setEditable(false);
 		System.out.println(this.getWidth());
 		
 		this.addKeyListener(new KeyListener()
@@ -43,18 +43,28 @@ public class Eingabefeld extends JTextArea
 			
 			@Override
 			public void keyTyped(KeyEvent ke)
-			{
-				
-				
+			{	
+				//Wenn noch Initialisiert keine Eingaben machen
+				 if(Eingabefeld.this.state == INITIALIZED)
+				{
+					ke.consume();		
+				}
 			}
 			
+			private int curCols =0;
 			@Override
 			public void keyReleased(KeyEvent ke)
 			{
+				//Wenn initialisiert und Leertaste gedrückt wird Starten und Status auf Aktiv setzen
+				if(ke.getKeyCode() == KeyEvent.VK_SPACE && Eingabefeld.this.state == INITIALIZED)
+				{
+					ke.consume();
+					Eingabefeld.this.state = ACTIVE ;
+					Eingabefeld.this.repaint();			
+				}
 				
 				
 			}
-			
 			@Override
 			public void keyPressed(KeyEvent ke)
 			{
@@ -62,15 +72,24 @@ public class Eingabefeld extends JTextArea
 				if(ke.getKeyCode() == KeyEvent.VK_BACK_SPACE &&  Eingabefeld.this.can_correct == false)
 				{
 					ke.consume();
-				}
-				//Wenn initialisiert und Leertaste gedrückt wird Starten und Status auf Aktiv setzen
-				if(ke.getKeyCode() == KeyEvent.VK_SPACE && Eingabefeld.this.state == INITIALIZED)
+				}	
+				
+				else if(ke.getKeyCode() != KeyEvent.VK_SPACE && ke.getKeyCode() != KeyEvent.VK_SHIFT)
 				{
-					Eingabefeld.this.setEditable(true);
-					Eingabefeld.this.state = ACTIVE ;
-					Eingabefeld.this.repaint();
-					ke.consume();
+					if(curCols >10)
+					{
+						Eingabefeld.this.setText(Eingabefeld.this.getText()+"\n");
+
+						curCols=0;
+						ke.consume();
+					}
+					curCols++;
+					System.out.println(curCols);
+
 				}
+				
+
+				
 			}
 		});
 		
@@ -108,12 +127,11 @@ public class Eingabefeld extends JTextArea
 	@Override
 	protected void paintComponent(Graphics g)
 	{
-		System.out.println(this.getWidth());
 		super.paintComponent(g);
 		
 		if(this.state == INITIALIZED)
 		{
-			//Startmeldung zeichen
+			
 			g.setColor(Color.RED);
 			g.setFont(new Font("Courier New",Font.BOLD,36));
 			g.drawString("Grundstellung einnehmen. Leertaste zum Starten drücken. ",50, this.getHeight()/2);
@@ -123,14 +141,10 @@ public class Eingabefeld extends JTextArea
 	}
 	
 
+
 	
 
 }
-
-
-
-
-
 
 
 
