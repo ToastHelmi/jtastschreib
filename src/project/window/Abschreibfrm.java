@@ -124,7 +124,7 @@ public class Abschreibfrm extends JFrame
 	{
 		if(_gestartet == true)
 		{
-						
+			//Der Text wird angezeigt und er kann abgetiptt werden			
 		}
 	}
 }
