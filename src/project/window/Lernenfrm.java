@@ -13,6 +13,7 @@ public class Lernenfrm extends ZeitFrm
 {
 	private Vorgabetext vorgabe;
 	//private Leuchttastenpanel _panel;
+	private Eingabefeld _eingabe;
 	public Lernenfrm(Vorgabetext vorgabetext)
 	{
 		super("Lernen");
@@ -30,6 +31,12 @@ public class Lernenfrm extends ZeitFrm
 		c.weightx = 1;
 		//this.add(_panel,c);
 		
+		_eingabe = new Eingabefeld(true);
+		c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 1;
+		c.weightx = 1;
+		this.add(_eingabe,c);
 		this.pack();
 	}
 	@Override
