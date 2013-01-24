@@ -1,12 +1,13 @@
 package project.thread;
 
 import project.window.Abschreibfrm;
+import project.window.ZeitFrm;
 
 public class ZeitThread extends Thread
 {
 	private int _zeit = 0;
-	private Abschreibfrm f;
-	public ZeitThread(int zeit,Abschreibfrm fenster)
+	private ZeitFrm f;
+	public ZeitThread(int zeit,ZeitFrm fenster)
 	{
 		_zeit = zeit;
 		f = fenster;
