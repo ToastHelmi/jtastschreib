@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import project.text.Vorgabetext;
 import project.thread.ZeitThread;
 
 public class Abschreibfrm extends ZeitFrm
@@ -22,10 +23,12 @@ public class Abschreibfrm extends ZeitFrm
 	private Eingabefeld _eingabe;//Eingabe
 	private ZeitThread t;
 	private JButton startButton;
-	public Abschreibfrm(int zeit)
+	private Vorgabetext _vorgabe;
+	public Abschreibfrm(int zeit,Vorgabetext vor)
 	{
 		super("Abschreiben");
 		_zeit = zeit;
+		_vorgabe = vor;
 		InitializeComponent();
 		endeAbschreiben();
 		t = new ZeitThread(_zeit * 60,this); //*60 bewirkt das _zeit zu Minuten wird
