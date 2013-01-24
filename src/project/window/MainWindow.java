@@ -32,6 +32,7 @@ public class MainWindow extends JFrame
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
+		c.fill = GridBagConstraints.BOTH;
 		this.add(abschreiben,c);
 		
 		JButton lernen = new JButton("Lernen");
@@ -46,6 +47,7 @@ public class MainWindow extends JFrame
 		c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
 		this.add(lernen,c);
 		
 		minuten = new JSpinner();
@@ -53,6 +55,8 @@ public class MainWindow extends JFrame
 		c.gridx = 1;
 		c.gridy = 0;
 		this.add(minuten,c);
+		this.setResizable(false);
+		this.pack();
 	}
 	public void ButtonKlick(ActionEvent e)
 	{
