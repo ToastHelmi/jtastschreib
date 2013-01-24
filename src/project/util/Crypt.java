@@ -1,6 +1,7 @@
 package project.util;
 
 import project.Exception.DecryptException;
+import project.text.Vorgabetext;
 
 public class Crypt 
 {
@@ -17,11 +18,11 @@ public class Crypt
 		return s;
 		
 	}
-	public static String getDecryptText(String text) throws DecryptException
+	public static Vorgabetext getDecryptText(String cryptedtext) throws DecryptException
 	{
 		String s ="";
 		int charcode;
-		for(String i : text.split(";"))
+		for(String i : cryptedtext.split(";"))
 		{
 			try
 			{
@@ -34,6 +35,6 @@ public class Crypt
 				throw new DecryptException(i + " konte nicht in ein zeichen umgewandelt werden");
 			}
 		}
-		return s;
+		return new Vorgabetext(s);
 	}
 }
