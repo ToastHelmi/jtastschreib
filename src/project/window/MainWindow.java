@@ -71,18 +71,22 @@ public class MainWindow extends JFrame
 	public void ButtonKlick(ActionEvent e)
 	{
 		Vorgabetext vorgabe = null;
+		String path = null;
 		try 
 		{
+			path = getTextPath();
 			//Öffnent des FileBrowser, decryptet den eingelesenen Text und wandelt es in ein Vorgabetext-Objekt um
-			vorgabe = Crypt.getDecryptText(TextDatei.getCryptedText(getTextPath()));
+			if(path != null)
+			vorgabe = Crypt.getDecryptText(TextDatei.getCryptedText(path));
 		} 
 		catch (DecryptException e1) 
 		{
 			// TODO MessageBox mit Fehlermeldung
+			e1.getMessage();
 		}
 		if(e.getActionCommand().equals("Abschreiben auf Zeit"))
 		{
-			if(vorgabe != null)
+			if(vorgabe != null )
 			{
 				Abschreibfrm f = new Abschreibfrm((int)(minuten.getValue()),vorgabe);
 				f.setVisible(true);
@@ -135,6 +139,7 @@ public class MainWindow extends JFrame
         if (result == JFileChooser.APPROVE_OPTION) {
             File inputVerzFile = chooser.getSelectedFile();
             chooser.setVisible(false);
+            
             if(!inputVerzFile.isDirectory())
             	return inputVerzFile.getPath();
             else

@@ -3,6 +3,7 @@ package project.main;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+import project.util.Crypt;
 import project.window.MainWindow;
 
 /**
