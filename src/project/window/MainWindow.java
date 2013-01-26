@@ -13,6 +13,9 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeListener;
 
 import project.Exception.DecryptException;
 import project.text.TextDatei;
@@ -60,7 +63,8 @@ public class MainWindow extends JFrame
 		c.fill = GridBagConstraints.HORIZONTAL;
 		this.add(lernen,c);
 		
-		minuten = new JSpinner();
+		SpinnerNumberModel _model = new SpinnerNumberModel(1,1,100,1);
+		minuten = new JSpinner(_model);
 		c = new GridBagConstraints();
 		c.gridx = 1;
 		c.gridy = 0;
@@ -172,6 +176,5 @@ public class MainWindow extends JFrame
         	return null;
         }
         	
-    } 
-
+    }
 }
