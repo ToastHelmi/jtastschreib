@@ -65,6 +65,22 @@ public class MainWindow extends JFrame
 		c.gridx = 1;
 		c.gridy = 0;
 		this.add(minuten,c);
+		
+		c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 2;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		JButton btcrypt = new JButton("Verschlüsseln");
+		//this.add(btcrypt,c);
+		btcrypt.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				ButtonKlick(arg0);
+			}
+		});
+		
 		this.setResizable(false);
 		this.pack();
 	}
@@ -99,6 +115,11 @@ public class MainWindow extends JFrame
 				Lernenfrm f = new Lernenfrm(vorgabe);
 				f.setVisible(true);
 			}
+		}
+		else if(e.getActionCommand().equals("Verschlüsseln"))
+		{
+			String neuertext = Crypt.getCryptText(TextDatei.getCryptedText(path));
+			System.out.println(neuertext);
 		}
 	}
 	private String getTextPath() 
