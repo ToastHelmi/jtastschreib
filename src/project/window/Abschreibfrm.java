@@ -54,6 +54,7 @@ public class Abschreibfrm extends ZeitFrm
 		c.gridx = 0;
 		c.gridy = 1;
 		c.weightx = 1;
+		c.weighty = 1;
 		c.gridwidth = 2;
 		c.fill = GridBagConstraints.BOTH;
 		_eingabe = new Eingabefeld(true);
