@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 import project.text.Auswertung;
 import project.text.Vorgabetext;
@@ -57,7 +58,7 @@ public class Abschreibfrm extends ZeitFrm
 		c.fill = GridBagConstraints.BOTH;
 		_eingabe = new Eingabefeld(true);
 		_eingabe.add(new JScrollPane());
-		JScrollPane _pane = new JScrollPane(_eingabe);
+		JScrollPane _pane = new JScrollPane(_eingabe,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		//_pane.setVerticalScrollBarPolicy(ScrollPane.SCROLLBARS_NEVER);
 		//_pane.setHorizontalScrollBarPolicy(ScrollPane.SCROLLBARS_ALWAYS);
 		this.add(_pane,c);
