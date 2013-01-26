@@ -23,5 +23,9 @@ public class Eingabetext
 	{
 		return list.size();
 	}
+	public String getItem(int i)
+	{
+		return list[i];
+	}
 
 }
