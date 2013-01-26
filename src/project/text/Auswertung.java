@@ -11,6 +11,7 @@ public class Auswertung
 		_eingabe = ein;
 		_vorgabe = vor;
 		_woerter = new boolean[_vorgabe.getLength()];
+		auswertung();
 	}
 	private void auswertung()
 	{
@@ -18,8 +19,30 @@ public class Auswertung
 		{
 			for(int i = 0; i < _vorgabe.getLength();i++)
 			{
-				if(_vorgabe.getItem(i).equals(_eingabe.getEingabe()))
+				if(_vorgabe.getItem(i).equals(_eingabe.getItem(i)))
+				{
+					//Das Wort ist richtig geschrieben
+					_woerter[i] = true;
+				}
+				else
+				{
+					//Wort wurde falsch geschrieben
+					if(i > 0 && _woerter[i -1] == true)
+					{
+						//Das vorherige Wort wurde richtig geschrieben => neuer Fehler
+						_fehler++;
+					}
+					else
+					{
+						//Das vorherige Wort wurde falsch geschrieben => kein Fehler
+					}
+					_woerter[i] = false;
+				}
 			}
 		}
+	}
+	public int getFehlerAnzahl()
+	{
+		return _fehler;
 	}
 }
