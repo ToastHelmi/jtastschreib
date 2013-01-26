@@ -2,6 +2,7 @@ package project.window;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -10,7 +11,9 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 
+import project.text.Auswertung;
 import project.text.Vorgabetext;
 import project.thread.ZeitThread;
 
@@ -24,6 +27,7 @@ public class Abschreibfrm extends ZeitFrm
 	private ZeitThread t;
 	private JButton startButton;
 	private Vorgabetext _vorgabe;
+	private Auswertung _auswertung = null;
 	public Abschreibfrm(int zeit,Vorgabetext vor)
 	{
 		super("Abschreiben");
@@ -52,7 +56,11 @@ public class Abschreibfrm extends ZeitFrm
 		c.gridwidth = 2;
 		c.fill = GridBagConstraints.BOTH;
 		_eingabe = new Eingabefeld(true);
-		this.add(_eingabe,c);
+		_eingabe.add(new JScrollPane());
+		JScrollPane _pane = new JScrollPane(_eingabe);
+		//_pane.setVerticalScrollBarPolicy(ScrollPane.SCROLLBARS_NEVER);
+		//_pane.setHorizontalScrollBarPolicy(ScrollPane.SCROLLBARS_ALWAYS);
+		this.add(_pane,c);
 		
 		c = new GridBagConstraints();
 		
@@ -99,7 +107,9 @@ public class Abschreibfrm extends ZeitFrm
 		//_schriftpanel.setEnabled(false);
 		
 		_eingabe.setEnabled(false);
+		
 		//Auswertung aufrufen
+		//_auswertung = new Auswertung(_eingabe.getEingabe(),_vorgabe);
 	}
 	public void startButtonClick(ActionEvent e)
 	{
