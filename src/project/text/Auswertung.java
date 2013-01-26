@@ -32,6 +32,11 @@ public class Auswertung
 						//Das vorherige Wort wurde richtig geschrieben => neuer Fehler
 						_fehler++;
 					}
+					else if(i == 0)
+					{
+						//Das erste Wort ist falsch geschrieben
+						_fehler++;
+					}
 					else
 					{
 						//Das vorherige Wort wurde falsch geschrieben => kein Fehler
