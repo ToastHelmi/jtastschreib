@@ -57,7 +57,7 @@ public class Abschreibfrm extends ZeitFrm
 		c.weighty = 1;
 		c.gridwidth = 2;
 		c.fill = GridBagConstraints.BOTH;
-		_eingabe = new Eingabefeld(true);
+		_eingabe = new Eingabefeld(false);
 		_eingabe.add(new JScrollPane());
 		JScrollPane _pane = new JScrollPane(_eingabe,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		//_pane.setVerticalScrollBarPolicy(ScrollPane.SCROLLBARS_NEVER);
