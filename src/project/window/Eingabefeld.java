@@ -1,6 +1,7 @@
 package project.window;
+
 import java.awt.Color;
-import java.awt.Cursor;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.FocusEvent;
@@ -36,7 +37,8 @@ public class Eingabefeld extends JTextArea
 		this.setColumns(100);
 		this.setMaximumSize(this.getSize());
 		this.state = INITIALIZED;
-		System.out.println(this.getWidth());
+		this.can_correct = can_correct;
+
 		
 		this.addKeyListener(new KeyListener()
 		{
@@ -49,9 +51,26 @@ public class Eingabefeld extends JTextArea
 				{
 					ke.consume();		
 				}
+				 
+				 else if (Eingabefeld.this.state == ACTIVE)
+				 {
+					 String text = Eingabefeld.this.getText();
+					 String[] zeilen = text.split("\n");
+					 String lastzeile = zeilen[zeilen.length-1];
+					 if(lastzeile.length() >=100)
+					 {
+						 String lastwords[] = lastzeile.split(" ");
+						 String lastword = lastwords[lastwords.length-1];
+						 
+						 
+						 Eingabefeld.this.setText(text.substring(0, text.length()-lastword.length()-1) + "\n"+lastword);
+					 }
+					 
+					 
+				 } 
+				 
 			}
 			
-			private int curCols =0;
 			@Override
 			public void keyReleased(KeyEvent ke)
 			{
@@ -73,23 +92,6 @@ public class Eingabefeld extends JTextArea
 				{
 					ke.consume();
 				}	
-				
-				else if(ke.getKeyCode() != KeyEvent.VK_SPACE && ke.getKeyCode() != KeyEvent.VK_SHIFT)
-				{
-					if(curCols >10)
-					{
-						Eingabefeld.this.setText(Eingabefeld.this.getText()+"\n");
-
-						curCols=0;
-						ke.consume();
-					}
-					curCols++;
-					System.out.println(curCols);
-
-				}
-				
-
-				
 			}
 		});
 		
@@ -111,6 +113,8 @@ public class Eingabefeld extends JTextArea
 				
 			}
 		});
+		
+		
 	}
 	
 	public int getState()
@@ -139,13 +143,4 @@ public class Eingabefeld extends JTextArea
 		}
 		
 	}
-	
-
-
-	
-
 }
-
-
-
-
