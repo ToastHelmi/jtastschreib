@@ -3,8 +3,10 @@ package project.main;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+import project.text.Auswertung;
 import project.util.Crypt;
 import project.window.MainWindow;
+import project.window.Printfrm;
 
 /**
  * @author Schwarz,Keck,Matejka,Rößler
@@ -33,6 +35,7 @@ public class Application
 		{
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
+		
 		MainWindow w = new MainWindow(); 
 		w.setVisible(true);//Das Auswahlfenster wird erzeugt und angezeigt
 	}
