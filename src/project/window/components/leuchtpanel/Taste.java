@@ -232,6 +232,8 @@ public class Taste
 				t = ta;
 			}
 		}
+		if(t == null)
+			System.out.println("Taste not found");
 		return t;
 	}
 }
