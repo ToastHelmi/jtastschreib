@@ -97,7 +97,7 @@ public class MainWindow extends JFrame
 			path = getTextPath();
 			//Öffnent des FileBrowser, decryptet den eingelesenen Text und wandelt es in ein Vorgabetext-Objekt um
 			if(path != null)
-			vorgabe = Crypt.getDecryptText(TextDatei.getCryptedText(path));
+			vorgabe = Crypt.getDecryptText(TextDatei.getInhaltVon(path));
 		} 
 		catch (DecryptException e1) 
 		{
@@ -122,7 +122,7 @@ public class MainWindow extends JFrame
 		}
 		else if(e.getActionCommand().equals("Verschlüsseln"))
 		{
-			String neuertext = Crypt.getCryptText(TextDatei.getCryptedText(path));
+			String neuertext = Crypt.getCryptText(TextDatei.getInhaltVon(path));
 			System.out.println(neuertext);
 		}
 	}

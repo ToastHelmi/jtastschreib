@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class TextDatei 
 {
-	public static String getCryptedText(String path)
+	public static String getInhaltVon(String path)
 	{	
 		 String s = null,result = "";
 		 BufferedReader br = null;

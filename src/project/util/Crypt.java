@@ -8,10 +8,11 @@ public class Crypt
 	public static String getCryptText(String text)
 	{
 		String s = "";
-		 
+		int i;
 		 for(char c : text.toCharArray())
-		 {
-			 s += (int)c + ";";
+		 { 	
+			 i = ((int)c)*3;
+			 s += i + ";";
 		 }
 		 
 		 s = s.substring(0, s.length()-1);
@@ -27,6 +28,7 @@ public class Crypt
 			try
 			{
 				charcode = Integer.parseInt(i);
+				charcode = charcode / 3;
 				s += (char)charcode;
 				
 			}
