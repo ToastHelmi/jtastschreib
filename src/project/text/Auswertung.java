@@ -50,4 +50,9 @@ public class Auswertung
 	{
 		return _fehler;
 	}
+	public String[] getEingabe()
+	{
+		//Kommentar fürs Commiten
+		return _eingabe.getEingabe();
+	}
 }
