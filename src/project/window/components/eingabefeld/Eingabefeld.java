@@ -1,4 +1,4 @@
-package project.window;
+package project.window.components.eingabefeld;
 
 import java.awt.Color;
 

@@ -17,6 +17,7 @@ import javax.swing.ScrollPaneConstants;
 import project.text.Auswertung;
 import project.text.Vorgabetext;
 import project.thread.ZeitThread;
+import project.window.components.eingabefeld.Eingabefeld;
 
 public class Abschreibfrm extends ZeitFrm
 {

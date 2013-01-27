@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import project.text.Vorgabetext;
+import project.window.components.eingabefeld.Eingabefeld;
 
 public class Lernenfrm extends ZeitFrm
 {
