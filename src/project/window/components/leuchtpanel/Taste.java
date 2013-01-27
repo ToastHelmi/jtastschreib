@@ -219,5 +219,16 @@ public class Taste
 		
 		return liste;
 	}
-	
+	public static Taste getTasteWithText(String text)
+	{
+		Taste t = null;
+		for(Taste ta : getNormalKeyboard())
+		{
+			if(ta.getOhneShiftbeschriftung().equals(text) || ta.getShiftbeschriftung().equals(text))
+			{
+				t = ta;
+			}
+		}
+		return t;
+	}
 }
