@@ -16,6 +16,7 @@ public class Leuchtpanel extends JPanel
 	private FontRenderContext _frc =  new FontRenderContext(new AffineTransform(),false,false);
 	private Rectangle2D _fontsize;
 	private ArrayList<Taste> _tasten;
+	private boolean _shiftgedrueckt = false;
 	public Leuchtpanel(ArrayList<Taste> tasten)
 	{
 		_tasten = tasten;
@@ -33,9 +34,19 @@ public class Leuchtpanel extends JPanel
 //		{
 //			drawTaste(Color.GREEN,Tasten[i],(i*50)+22,50,45,45,g);
 //		}
-		for(Taste t : _tasten)
+		if(_shiftgedrueckt == false)
 		{
-			drawTaste(t.getFarbe(),t.getBeschriftung(),t.getXstelle(),t.getYstelle(),t.getWidth(),t.getHeight(),g);
+			for(Taste t : _tasten)
+			{
+				drawTaste(t.getFarbe(),t.getOhneShiftbeschriftung(),t.getXstelle(),t.getYstelle(),t.getWidth(),t.getHeight(),g);
+			}
+		}
+		else
+		{
+			for(Taste t : _tasten)
+			{
+				drawTaste(t.getFarbe(),t.getShiftbeschriftung(),t.getXstelle(),t.getYstelle(),t.getWidth(),t.getHeight(),g);
+			}
 		}
 	}
 	private void drawTaste(Color c, String text, int xPos, int yPos, int width, int height, Graphics g)
