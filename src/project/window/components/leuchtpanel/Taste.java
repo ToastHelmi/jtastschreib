@@ -221,6 +221,9 @@ public class Taste
 	}
 	public static Taste getTasteWithText(String text)
 	{
+		//Sucht die Taste mit dieser Beschriftung(egal ob Shift-Beschriftung oder OhneShift-Beschriftung
+		//und liefert dies als Objekt zurück.
+		//Die Methode liefert null zurück wenn keine passendes Objekt gefunden wurde
 		Taste t = null;
 		for(Taste ta : getNormalKeyboard())
 		{
