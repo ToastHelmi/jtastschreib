@@ -35,7 +35,7 @@ public class Leuchtpanel extends JPanel
 //		}
 		for(Taste t : _tasten)
 		{
-			drawTaste(t.getFarbe(),t.getBeschriftung(),t.getXstelle()*50,t.getYstelle()*50,t.getWidth(),t.getHeight(),g);
+			drawTaste(t.getFarbe(),t.getBeschriftung(),t.getXstelle(),t.getYstelle(),t.getWidth(),t.getHeight(),g);
 		}
 	}
 	private void drawTaste(Color c, String text, int xPos, int yPos, int width, int height, Graphics g)
