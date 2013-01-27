@@ -63,8 +63,8 @@ public class Printfrm extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				String s = Printfrm.this.tf_name.getText();
-				if(s != "")//TODO if funtzt nicht!! keine ahnung warum
+				
+				if(! Printfrm.this.tf_name.getText().equals(""))//TODO if funtzt nicht!! keine ahnung warum
 				{	
 					Printfrm.this._name = tf_name.getText();
 					Print();
@@ -96,9 +96,11 @@ public class Printfrm extends JFrame
 			Graphics g =auftrag.getGraphics();
 			if(g != null)
 			{
-				g.setFont(_font);
 			
-				g.drawString("test", 40, 40);
+					
+				g.setFont(_font);
+				
+				g.drawString("s", 40, 40);
 				g.dispose();
 				//TODO Draw text 
 				//TODO draw Line

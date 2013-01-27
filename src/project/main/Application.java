@@ -35,7 +35,7 @@ public class Application
 		{
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
-		
+		//Printfrm f = new Printfrm(null,"test",null);
 		MainWindow w = new MainWindow(); 
 		w.setVisible(true);//Das Auswahlfenster wird erzeugt und angezeigt
 	}
