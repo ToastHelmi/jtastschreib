@@ -23,6 +23,7 @@ public class Lernenfrm extends ZeitFrm
 	public Lernenfrm(Vorgabetext vorgabetext)
 	{
 		super("Lernen");
+		this.setModal(true);
 		vorgabe = vorgabetext;
 		InitializeComponent();
 	}
