@@ -36,83 +36,13 @@ public class Eingabefeld extends JTextArea
 		this.setRows(30);
 		this.setColumns(100);
 		this.setMaximumSize(this.getSize());
-		this.state = INITIALIZED;
-		this.can_correct = can_correct;
+		this.setState(INITIALIZED);
+		this.setCan_correct(can_correct);
 
 		
-		this.addKeyListener(new KeyListener()
-		{
-			
-			@Override
-			public void keyTyped(KeyEvent ke)
-			{	
-				//Wenn noch Initialisiert keine Eingaben machen
-				 if(Eingabefeld.this.state == INITIALIZED)
-				{
-					ke.consume();		
-				}
-				 
-				 else if (Eingabefeld.this.state == ACTIVE)
-				 {
-					 String text = Eingabefeld.this.getText();
-					 String[] zeilen = text.split("\n");
-					 String lastzeile = zeilen[zeilen.length-1];
-					 if(lastzeile.length() >=100)
-					 {
-						 String lastwords[] = lastzeile.split(" ");
-						 String lastword = lastwords[lastwords.length-1];
-						 
-						 
-						 Eingabefeld.this.setText(text.substring(0, text.length()-lastword.length()-1) + "\n"+lastword);
-					 }
-					 
-					 
-				 } 
-				 
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent ke)
-			{
-				//Wenn initialisiert und Leertaste gedrückt wird Starten und Status auf Aktiv setzen
-				if(ke.getKeyCode() == KeyEvent.VK_SPACE && Eingabefeld.this.state == INITIALIZED)
-				{
-					ke.consume();
-					Eingabefeld.this.state = ACTIVE ;
-					Eingabefeld.this.repaint();			
-				}
-				
-				
-			}
-			@Override
-			public void keyPressed(KeyEvent ke)
-			{
-				//Wenn nicht korregiert werden darf und Backspace gedrückt wird Event Abbrechen 
-				if(ke.getKeyCode() == KeyEvent.VK_BACK_SPACE &&  Eingabefeld.this.can_correct == false)
-				{
-					ke.consume();
-				}	
-			}
-		});
-		
-		this.addFocusListener(new FocusListener()
-		{
-			//Während des Schreibens den Fokus immer auf dem Textfeld lassen
-			@Override
-			public void focusLost(FocusEvent arg0)
-			{
-				if(Eingabefeld.this.state == Eingabefeld.ACTIVE)
-				{
-					Eingabefeld.this.requestFocus();	
-				}
-			}
-			
-			@Override
-			public void focusGained(FocusEvent arg0)
-			{
-				
-			}
-		});
+        this.addKeyListener(new EingabefeldKeyListener(this));			
+		this.addFocusListener(new EingabefeldFocusListener(this));
+
 		
 		
 	}
@@ -125,7 +55,7 @@ public class Eingabefeld extends JTextArea
 	public void lock()
 	{
 		this.setEditable(false);
-		this.state= FINISH_LOCKED;
+		this.setState(FINISH_LOCKED);
 	}
 	
 	@Override
@@ -133,7 +63,7 @@ public class Eingabefeld extends JTextArea
 	{
 		super.paintComponent(g);
 		
-		if(this.state == INITIALIZED)
+		if(this.getState() == INITIALIZED)
 		{
 			
 			g.setColor(Color.RED);
@@ -142,5 +72,20 @@ public class Eingabefeld extends JTextArea
 			
 		}
 		
+	}
+
+	public boolean isCan_correct()
+	{
+		return can_correct;
+	}
+
+	public void setCan_correct(boolean can_correct)
+	{
+		this.can_correct = can_correct;
+	}
+
+	public void setState(int state)
+	{
+		this.state = state;
 	}
 }
