@@ -202,6 +202,10 @@ public class Taste
 		t = new Taste(622,150,"Shift",Color.RED,113,45);
 		liste.add(t);
 		
+		//Fünfte Reihe
+		t = new Taste(122,200,"Leertaste",Color.WHITE,450,45);
+		liste.add(t);
+		
 		return liste;
 	}
 }
