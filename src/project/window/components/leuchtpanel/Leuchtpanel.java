@@ -51,7 +51,7 @@ public class Leuchtpanel extends JPanel
 		}
 		for(Taste t : _markieren)
 		{
-			markieren(Color.RED,t.getXstelle(),t.getYstelle(),t.getWidth(),t.getHeight(),g);
+			markieren(Color.CYAN,t.getXstelle(),t.getYstelle(),t.getWidth(),t.getHeight(),g);
 		}
 	}
 	private void drawTaste(Color c, String text, int xPos, int yPos, int width, int height, Graphics g)
@@ -72,6 +72,7 @@ public class Leuchtpanel extends JPanel
 	public void tasteMarkieren(Taste t)
 	{
 		_markieren.add(t);
+		this.repaint();
 	}
 	public void tasteEntmarkeiren(Taste t)
 	{
@@ -79,6 +80,7 @@ public class Leuchtpanel extends JPanel
 		{
 			_markieren.remove(t);
 		}
+		this.repaint();
 	}
 	public void shiftGedrueckt(boolean b)
 	{
