@@ -1,7 +1,7 @@
 package project.window;
 
-import java.awt.Component;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -10,7 +10,6 @@ import java.awt.PrintJob;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,7 +23,7 @@ public class Printfrm extends JFrame
 	private Auswertung _auswertung;
 	private String _name;
 	private Frame _source;
-	private String _text;
+	private String[] _text;
 	private Font _font;
 	private final JTextField tf_name;
 	public Printfrm(Auswertung a, String name, JFrame Source)
@@ -83,24 +82,48 @@ public class Printfrm extends JFrame
 		this.add(print,c);
 		this.pack();
 		this.setVisible(true);
-		//for(String : )
-		//TODO text zusammenbauen wen getStringarray verfügbar in Auswertung
+		// string _text definiren
 		
 	}
 	public void Print() 
 	{
 		Toolkit tk = getToolkit();
 		PrintJob auftrag = tk.getPrintJob(this,this._name + "'s Ausdruck" , null);
+		FontMetrics fm ;
+		int width;
+		int pagewidth;
+		int height;
+		int y = 40;
+		String s = "";
 		if(auftrag != null)
 		{
+			pagewidth = auftrag.getPageDimension().width;
 			Graphics g =auftrag.getGraphics();
-			if(g != null)
-			{
 			
-					
+			if(g != null)
+			{	
 				g.setFont(_font);
+				fm = g.getFontMetrics();
+				height = fm.getHeight();
 				
-				g.drawString("s", 40, 40);
+				// TODO schleife für sieten
+				
+				for(int i = 0 ; i < 50; i++ ) // TODO < _text.lenght
+				{
+					
+					do
+					{
+						s += "test";//TODO += _text[i]
+						i++;
+						//System.out.println(fm.stringWidth(s + "test" ));
+					}
+					while (fm.stringWidth(s + "test" )< (pagewidth - 70)); //TODO + _text[i]
+					g.drawString(s,40, y);
+					s = "";
+					y += height + 5;
+				}
+				
+				
 				g.dispose();
 				//TODO Draw text 
 				//TODO draw Line
