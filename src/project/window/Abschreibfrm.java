@@ -33,6 +33,7 @@ public class Abschreibfrm extends ZeitFrm
 	public Abschreibfrm(int zeit,Vorgabetext vor)
 	{
 		super("Abschreiben");
+		this.setModal(true);
 		_zeit = zeit;
 		_vorgabe = vor;
 		InitializeComponent();
