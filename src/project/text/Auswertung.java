@@ -6,6 +6,7 @@ public class Auswertung
 	private boolean[] _woerter;
 	private Eingabetext _eingabe;
 	private Vorgabetext _vorgabe;
+	private boolean _allesgeschaft = false;
 	public Auswertung(Eingabetext ein, Vorgabetext vor)
 	{
 		_eingabe = ein;
@@ -17,32 +18,38 @@ public class Auswertung
 	{
 		if( _vorgabe.getLength() == _eingabe.length())
 		{
-			for(int i = 0; i < _vorgabe.getLength();i++)
+			//Er hat alles abgeschrieben bzw. er hat soviele Wˆrter geschrieben wie verlangt waren
+			_allesgeschaft = true;
+		}
+		else
+		{
+			_allesgeschaft = false;
+		}
+		for(int i = 0; i < _vorgabe.getLength();i++)
+		{
+			if(_vorgabe.getItem(i).equals(_eingabe.getItem(i)))
 			{
-				if(_vorgabe.getItem(i).equals(_eingabe.getItem(i)))
+				//Das Wort ist richtig geschrieben
+				_woerter[i] = true;
+			}
+			else
+			{
+				//Wort wurde falsch geschrieben
+				if(i > 0 && _woerter[i -1] == true)
 				{
-					//Das Wort ist richtig geschrieben
-					_woerter[i] = true;
+					//Das vorherige Wort wurde richtig geschrieben => neuer Fehler
+					_fehler++;
+				}
+				else if(i == 0)
+				{
+					//Das erste Wort ist falsch geschrieben
+					_fehler++;
 				}
 				else
 				{
-					//Wort wurde falsch geschrieben
-					if(i > 0 && _woerter[i -1] == true)
-					{
-						//Das vorherige Wort wurde richtig geschrieben => neuer Fehler
-						_fehler++;
-					}
-					else if(i == 0)
-					{
-						//Das erste Wort ist falsch geschrieben
-						_fehler++;
-					}
-					else
-					{
-						//Das vorherige Wort wurde falsch geschrieben => kein Fehler
-					}
-					_woerter[i] = false;
+					//Das vorherige Wort wurde falsch geschrieben => kein Fehler
 				}
+				_woerter[i] = false;
 			}
 		}
 	}
@@ -54,5 +61,9 @@ public class Auswertung
 	{
 		//Kommentar f√ºrs Commiten
 		return _eingabe.getEingabe();
+	}
+	public boolean allesGeschaft()
+	{
+		return _allesgeschaft;
 	}
 }
