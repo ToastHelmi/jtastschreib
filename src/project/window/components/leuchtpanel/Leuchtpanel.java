@@ -1,4 +1,4 @@
-package project.window;
+package project.window.components.leuchtpanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
