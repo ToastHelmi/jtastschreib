@@ -17,6 +17,7 @@ public class Leuchtpanel extends JPanel
 	private Rectangle2D _fontsize;
 	private ArrayList<Taste> _tasten;
 	private boolean _shiftgedrueckt = false;
+	private ArrayList<Taste> _markieren = new ArrayList<Taste>();
 	public Leuchtpanel(ArrayList<Taste> tasten)
 	{
 		_tasten = tasten;
@@ -48,6 +49,10 @@ public class Leuchtpanel extends JPanel
 				drawTaste(t.getFarbe(),t.getShiftbeschriftung(),t.getXstelle(),t.getYstelle(),t.getWidth(),t.getHeight(),g);
 			}
 		}
+		for(Taste t : _markieren)
+		{
+			markieren(Color.RED,t.getXstelle(),t.getYstelle(),t.getWidth(),t.getHeight(),g);
+		}
 	}
 	private void drawTaste(Color c, String text, int xPos, int yPos, int width, int height, Graphics g)
 	{
@@ -59,5 +64,24 @@ public class Leuchtpanel extends JPanel
 		//g.drawRoundRect(xPos, yPos, width, height, 20, 20);
 		//g.drawString(text, (xPos + (width / 2) - 5) , (yPos + (height/2 ) + 5));
 		g.drawString(text, xPos + (int)((width  - _fontsize.getWidth()) / 2 ),yPos + 20+(int)((height - _fontsize.getHeight())/ 2 ));
+	}
+	private void markieren(Color c, int xPos, int yPos, int width, int height, Graphics g)
+	{
+		g.drawRoundRect(xPos, yPos, width, height, 20, 20);
+	}
+	public void tasteMarkieren(Taste t)
+	{
+		_markieren.add(t);
+	}
+	public void tasteEntmarkeiren(Taste t)
+	{
+		if(t != null)
+		{
+			_markieren.remove(t);
+		}
+	}
+	public void shiftGedrueckt(boolean b)
+	{
+		_shiftgedrueckt = b;
 	}
 }
