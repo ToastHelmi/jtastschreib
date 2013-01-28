@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 
 import project.text.Auswertung;
 
+@SuppressWarnings("serial")
 public class Printfrm extends JFrame
 {
 	private Auswertung _auswertung;
@@ -29,8 +30,8 @@ public class Printfrm extends JFrame
 	public Printfrm(Auswertung a, String name, JFrame Source)
 	{
 		this._auswertung = a;
-		this._name = name;
 		this._source = Source;
+		this._text = _auswertung.getEingabe();
 		this._font = new Font("TimesRoman",Font.BOLD,15);
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -63,7 +64,7 @@ public class Printfrm extends JFrame
 			public void actionPerformed(ActionEvent e) 
 			{
 				
-				if(! Printfrm.this.tf_name.getText().equals(""))//TODO if funtzt nicht!! keine ahnung warum
+				if(! Printfrm.this.tf_name.getText().equals(""))
 				{	
 					Printfrm.this._name = tf_name.getText();
 					Print();
@@ -82,15 +83,13 @@ public class Printfrm extends JFrame
 		this.add(print,c);
 		this.pack();
 		this.setVisible(true);
-		// string _text definiren
 		
 	}
 	public void Print() 
 	{
 		Toolkit tk = getToolkit();
-		PrintJob auftrag = tk.getPrintJob(this,this._name + "'s Ausdruck" , null);
+		PrintJob auftrag = tk.getPrintJob(this._source,this._name + "'s Ausdruck" , null);
 		FontMetrics fm ;
-		int width;
 		int pagewidth;
 		int height;
 		int y = 40;
@@ -108,19 +107,20 @@ public class Printfrm extends JFrame
 				
 				// TODO schleife für sieten
 				
-				for(int i = 0 ; i < 50; i++ ) // TODO < _text.lenght
+				for(int i = 0 ; i <_text.length-1; i+= 0 )
 				{
 					
 					do
 					{
-						s += "test";//TODO += _text[i]
+						s += " "+  _text[i];
+						if(i == _text.length -1)
+							break;
 						i++;
-						//System.out.println(fm.stringWidth(s + "test" ));
 					}
-					while (fm.stringWidth(s + "test" )< (pagewidth - 70)); //TODO + _text[i]
+					while (fm.stringWidth(s + " "+ _text[i] )< (pagewidth - 70));
 					g.drawString(s,40, y);
 					s = "";
-					y += height + 5;
+					y += height;
 				}
 				
 				
